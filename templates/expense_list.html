@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>My Expenses</h2>
+<p>Total Spent: ₦{{ total }}</p>
+
+<div class="expense-row">
+    {% for expense in expenses %}
+    <div class="expense-card">
+        <h3>{{ expense.title }}</h3>
+        <p>Amount: ₦{{ expense.amount }}</p>
+        <p>Date: {{ expense.date }}</p>
+        <p>Category: {{ expense.category }}</p>
+        <a href="{% url 'edit_expense' expense.id %}"><button class="secondary">Edit</button></a>
+        <a href="{% url 'delete_expense' expense.id %}"><button class="secondary">Delete</button></a>
+    </div>
+    {% empty %}
+        <p>No expenses yet. Add one!</p>
+    {% endfor %}
+</div>
+{% endblock %}

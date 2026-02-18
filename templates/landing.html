@@ -1,21 +1,53 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-<!-- Hero Section -->
-<div style="display:grid; place-items:center; min-height:80vh; text-align:center; background:#141414; color:white; padding:50px 20px;">
+
+
+<div style="
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('{% static 'images/bgs.jpg' %}') no-repeat center center/cover;
+    color: white;
+    padding: 50px 20px;
+">
 
     <div style="max-width:700px;">
-        <h1 style="font-size:3rem; margin-bottom:20px;">Track your spending.<br>Take control of your money.</h1>
-        <p style="font-size:1.2rem; color:#ccc; margin-bottom:30px;">
-            Expense Vault helps you stay organized, monitor your spending, and build smarter financial habits.
+        <h1 style="font-size:3rem; margin-bottom:20px; line-height:1.2;">Track Allowances.<br>Control Your Children's Funds.</h1>
+        <p style="font-size:1.2rem; color:#ddd; margin-bottom:30px;">
+            Expense Vault helps parents monitor allowances and manage weekly, monthly, or yearly funds.
         </p>
 
-        <form action="{% url 'signup' %}" method="get" style="display:grid; grid-template-columns:1fr auto; gap:10px; max-width:500px; margin:auto;">
-            <input type="email" placeholder="Email address" required 
-                   style="padding:14px; font-size:16px; border-radius:6px; border:1px solid #ccc; width:100%;">
-            <button type="submit" 
-                    style="padding:14px 22px; background:#e50914; color:white; border:none; border-radius:6px; font-size:16px; cursor:pointer;">
-                Get Started
+        <form action="{% url 'signup' %}" method="get" style="
+            display:grid;
+            grid-template-columns:1fr auto;
+            gap:10px;
+            max-width:500px;
+            margin:auto;
+        ">
+            <input type="email" placeholder="Your Email" required
+                   style="
+                       padding:14px;
+                       font-size:16px;
+                       border-radius:6px;
+                       border:none;
+                       width:100%;
+                   ">
+            <button type="submit" style="
+                padding:14px 22px;
+                background: #e50914;
+                color:white;
+                border:none;
+                border-radius:6px;
+                font-size:16px;
+                cursor:pointer;
+                transition: background 0.3s;
+            " onmouseover="this.style.background='#b00610'" onmouseout="this.style.background='#e50914'">
+                Start Tracking
             </button>
         </form>
     </div>
@@ -23,63 +55,47 @@
 </div>
 
 
-<div style="background:white; color:#111; padding:60px 20px; text-align:center;">
+<div style="
+    background:white; 
+    color:#111; 
+    padding:60px 20px; 
+    text-align:center;
+">
     <h2 style="font-size:2.5rem; margin-bottom:40px;">Why Use Expense Vault?</h2>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:40px; max-width:1000px; margin:auto;">
-
-        <div style="padding:20px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-            <h3 style="font-size:1.5rem; margin-bottom:10px;">Track Every Expense</h3>
-            <p style="color:#555;">Keep a detailed record of every penny you spend and never lose track of your money.</p>
+    <div style="
+        display:grid; 
+        grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); 
+        gap:40px; 
+        max-width:1000px; 
+        margin:auto;
+    ">
+        <div style="
+            padding:25px; 
+            border-radius:12px; 
+            box-shadow:0 8px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        " onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+            <h3 style="font-size:1.5rem; margin-bottom:10px;">Monitor Allowances</h3>
+            <p style="color:#555;">Track weekly, monthly, or yearly funds for each child.</p>
         </div>
-
-        <div style="padding:20px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-            <h3 style="font-size:1.5rem; margin-bottom:10px;">Visualize Your Spending</h3>
-            <p style="color:#555;">See your spending patterns at a glance with simple, clear visuals and reports.</p>
+        <div style="
+            padding:25px; 
+            border-radius:12px; 
+            box-shadow:0 8px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        " onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+            <h3 style="font-size:1.5rem; margin-bottom:10px;">Visual Reports</h3>
+            <p style="color:#555;">See spending patterns and fund history at a glance.</p>
         </div>
-
-        <div style="padding:20px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+        <div style="
+            padding:25px; 
+            border-radius:12px; 
+            box-shadow:0 8px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        " onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
             <h3 style="font-size:1.5rem; margin-bottom:10px;">Secure & Private</h3>
-            <p style="color:#555;">Your financial information stays safe and private — only you can access it.</p>
+            <p style="color:#555;">Your children’s financial info stays safe — only you can access it.</p>
         </div>
-
-    </div>
-</div>
-
-<div style="background:white; color:#111; padding:60px 20px; text-align:center;">
-    <h2 style="font-size:2.5rem; margin-bottom:40px;">Why Join Expense Vault?</h2>
-
-    <div style="max-width:800px; margin:auto; text-align:left;">
-
-        <div style="margin-bottom:10px; border:1px solid #ccc; border-radius:8px; overflow:hidden;">
-            <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';" 
-                    style="width:100%; padding:15px; font-size:1.2rem; font-weight:bold; background:#f3f3f3; border:none; text-align:left; cursor:pointer;">
-                Track Every Expense
-            </button>
-            <div style="display:none; padding:15px; background:#fff; font-size:1rem; color:#555;">
-                Keep a detailed record of every penny you spend and never lose track of your money.
-            </div>
-        </div>
-
-        <div style="margin-bottom:10px; border:1px solid #ccc; border-radius:8px; overflow:hidden;">
-            <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';" 
-                    style="width:100%; padding:15px; font-size:1.2rem; font-weight:bold; background:#f3f3f3; border:none; text-align:left; cursor:pointer;">
-                Visualize Your Spending
-            </button>
-            <div style="display:none; padding:15px; background:#fff; font-size:1rem; color:#555;">
-                See your spending patterns at a glance with simple, clear visuals and reports.
-            </div>
-        </div>
-
-        <div style="margin-bottom:10px; border:1px solid #ccc; border-radius:8px; overflow:hidden;">
-            <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';" 
-                    style="width:100%; padding:15px; font-size:1.2rem; font-weight:bold; background:#f3f3f3; border:none; text-align:left; cursor:pointer;">
-                Secure & Private
-            </button>
-            <div style="display:none; padding:15px; background:#fff; font-size:1rem; color:#555;">
-                Your financial information stays safe and private — only you can access it.
-            </div>
-        </div>
-
     </div>
 </div>
 

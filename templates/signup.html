@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div style="
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    background-size: cover;
+    animation: bgAnimation 15s ease infinite;
+">
+ 
+    <div style="
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border-radius: 16px;
+        padding: 50px 40px;
+        max-width: 420px;
+        width: 100%;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        text-align: center;
+        color: #fff;
+        animation: fadeIn 1s ease;
+    ">
+     
+        <div style="margin-bottom: 25px;">
+            <a href="{% url 'landing' %}">
+                <img src="{% static 'images/logo.png' %}" alt="Expense Vault" style="height:60px;">
+            </a>
+        </div>
+
+        <h2 style="margin-bottom: 30px; font-weight: 600; letter-spacing: 0.5px;">Create Your Account</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div style="
+                    background: rgba(255,255,255,0.2);
+                    padding: 10px 15px;
+                    border-radius: 8px;
+                    margin-bottom: 15px;
+                    font-size: 14px;
+                    color: #ff6b6b;
+                ">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST" style="display:flex; flex-direction:column; gap:15px;">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" style="
+                padding: 15px;
+                border: none;
+                border-radius: 8px;
+                background: linear-gradient(90deg,#ff416c,#ff4b2b);
+                font-size: 16px;
+                font-weight: 500;
+                cursor: pointer;
+                transition: transform 0.2s, box-shadow 0.2s;
+            " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 20px rgba(255,75,43,0.5)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+                Sign Up
+            </button>
+        </form>
+
+        <p style="margin-top:20px; color:#ccc;">
+            Already have an account? 
+            <a href="{% url 'login' %}" style="color:#ff416c; font-weight:500;">Sign in</a>
+        </p>
+    </div>
+</div>
+
+
+<style>
+@keyframes fadeIn {
+    from {opacity:0; transform: translateY(-20px);}
+    to {opacity:1; transform: translateY(0);}
+}
+
+@keyframes bgAnimation {
+    0% {background-position:0% 50%;}
+    50% {background-position:100% 50%;}
+    100% {background-position:0% 50%;}
+}
+
+/* Style form fields */
+input, select {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    transition: background 0.3s;
+}
+
+input:focus {
+    background: rgba(255,255,255,0.3);
+}
+</style>
+{% endblock %}

@@ -1,22 +1,36 @@
 {% extends 'base.html' %}
+{% block title %}Sign In - Expense Vault{% endblock %}
 
 {% block content %}
-<div style="min-height:100vh; display:grid; place-items:center; background:#000; color:white;">
-    <div style="width:100%; max-width:420px; padding:40px; background:rgba(0,0,0,0.75); border-radius:8px; text-align:center;">
-        <h1 style="margin-bottom:20px;">Parent Login</h1>
-        <p style="color:#ccc; margin-bottom:30px;">
-            Sign in to manage your children's allowances and track funds.
-        </p>
+<div class="container" style="max-width: 450px; margin-top: 120px;">
+    <div class="card bg-dark text-white border-0 shadow-lg p-4">
+        <h2 class="text-center mb-4">Sign In</h2>
+        
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                Invalid email or password. Try again.
+            </div>
+        {% endif %}
+
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" style="width:100%; padding:14px; background:#e50914; color:white; border:none; border-radius:4px; font-size:16px; cursor:pointer; margin-top:10px;">
-                Login & Track Allowances
-            </button>
+            
+            <div class="mb-3">
+                <label for="id_username" class="form-label">Email or Username</label>
+                {{ form.username }}
+            </div>
+            
+            <div class="mb-3">
+                <label for="id_password" class="form-label">Password</label>
+                {{ form.password }}
+            </div>
+
+            <button type="submit" class="btn btn-danger w-100 py-2 fs-5">Sign In</button>
         </form>
-        <p style="margin-top:20px;">
-            Don't have an account? <a href="{% url 'signup' %}" style="color:#e50914;">Sign up</a>
-        </p>
+
+        <div class="text-center mt-4">
+            <p>New to Expense Vault? <a href="{% url 'signup' %}" class="text-danger">Sign up now</a>.</p>
+        </div>
     </div>
 </div>
 {% endblock %}
